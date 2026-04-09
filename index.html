@@ -45,44 +45,6 @@
 
         #app {
             display: none; /* Caché jusqu’au clic */
-        }
-
-        /* Styles pour le portfolio après le clic */
-        header {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 20px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
-        nav a {
-            color: #ecf0f1;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            position: relative;
-        }
-        nav a::after {
-            content: '';
-            display: block;
-            height: 2px;
-            width: 0;
-            background: #e74c3c;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s;
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
-        #app {
             padding: 40px;
             max-width: 800px;
             margin: auto;
@@ -94,46 +56,25 @@
 <h1>Bienvenue sur mon Portfolio !</h1>
 <p>Cliquez n'importe où pour commencer</p>
 
-<div id="app"></div> <!-- Contenu chargé par les contrôleurs -->
+<div id="app"></div>
 
-<!-- Inclusion des contrôleurs JS -->
+<!-- Inclusion du contrôleur accueil JS -->
 <script src="./controleur/controleur_accueil.js"></script>
-<script src="./controleur/controleur_contact.js"></script>
 
 <script>
-    // Au clic n'importe où, on affiche le portfolio et charge l'accueil
+    // Au clic n'importe où, masquer le message et charger le contrôleur
     document.body.addEventListener('click', () => {
-        // Masquer le message de bienvenue
+        // Masquer le texte de bienvenue
         document.querySelector('h1').style.display = 'none';
         document.querySelector('p').style.display = 'none';
 
         // Afficher l'app
-        document.getElementById('app').style.display = 'block';
+        const app = document.getElementById('app');
+        app.style.display = 'block';
 
-        // Créer le header du portfolio
-        const header = document.createElement('header');
-        header.innerHTML = `
-            <h1>Mon Portfolio</h1>
-            <nav>
-                <a href="#" id="lienAccueil">Accueil</a>
-                <a href="#" id="lienContact">Contact</a>
-            </nav>
-        `;
-        document.body.insertBefore(header, document.getElementById('app'));
-
-        // Gestion des clics du menu
-        document.getElementById('lienAccueil').addEventListener('click', e => {
-            e.preventDefault();
-            controleurAccueil();
-        });
-        document.getElementById('lienContact').addEventListener('click', e => {
-            e.preventDefault();
-            controleurContact();
-        });
-
-        // Charge l'accueil par défaut
+        // Charger le contenu via le contrôleur
         controleurAccueil();
-    });
+    }, { once: true }); // L'événement ne se déclenche qu'une fois
 </script>
 
 </body>
