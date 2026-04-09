@@ -2,40 +2,48 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio - Nom Prénom</title>
+    <title>Bienvenue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: #f4f4f4;
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        #countdown {
+            font-weight: bold;
+            font-size: 2em;
+            color: #e74c3c;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <h1>Mon Portfolio</h1>
-    <nav>
-        <a href="#accueil" id="lienAccueil">Accueil</a>
-        <a href="#contact" id="lienContact">Contact</a>
-    </nav>
-    <hr>
-</header>
-
-<div id="app"></div>
-
-<!-- Inclusion directe des contrôleurs -->
-<script src="./controleur/controleur_accueil.js"></script>
-<script src="./controleur/controleur_contact.js"></script>
+<h1>Bienvenue sur mon Portfolio !</h1>
+<p>Vous allez être redirigé vers la page d'accueil dans <span id="countdown">5</span> secondes...</p>
 
 <script>
-    // Au clic sur Accueil
-    document.getElementById('lienAccueil').addEventListener('click', (e) => {
-        e.preventDefault();
-        controleurAccueil(); // Fonction définie dans controleur_accueil.js
-    });
+    let seconds = 5;
+    const countdownEl = document.getElementById('countdown');
 
-    // Au clic sur Contact
-    document.getElementById('lienContact').addEventListener('click', (e) => {
-        e.preventDefault();
-        controleurContact(); // Fonction définie dans controleur_contact.js
-    });
+    const interval = setInterval(() => {
+        seconds--;
+        countdownEl.textContent = seconds;
 
-    // Charge la page d'accueil par défaut
-    controleurAccueil();
+        if (seconds <= 0) {
+            clearInterval(interval);
+            // Redirection vers le contrôleur accueil
+            window.location.href = './controleur/controleur_accueil.html';
+        }
+    }, 1000);
 </script>
 
 </body>
