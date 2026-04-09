@@ -1,14 +1,13 @@
 function controleurAccueil() {
     const app = document.getElementById('app');
 
-    // On récupère plusieurs fragments comme en PHP include
+    // Charger plusieurs vues HTML
     Promise.all([
         fetch('./vue/vue_entete.html').then(r => r.text()),
         fetch('./vue/vue_accueil.html').then(r => r.text()),
         fetch('./vue/vue_pied.html').then(r => r.text())
     ])
     .then(([entete, contenu, pied]) => {
-        // On injecte le tout dans #app
         app.innerHTML = entete + contenu + pied;
     })
     .catch(err => {
