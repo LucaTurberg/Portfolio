@@ -42,40 +42,17 @@
             from { opacity: 0; transform: translateY(-20px);}
             to { opacity: 1; transform: translateY(0);}
         }
-
-        #app {
-            display: none; /* Caché jusqu’au clic */
-            padding: 40px;
-            max-width: 800px;
-            margin: auto;
-        }
     </style>
 </head>
 <body>
-
 <h1>Bienvenue sur mon Portfolio !</h1>
 <p>Cliquez n'importe où pour commencer</p>
 
-<div id="app"></div>
-
-<!-- Inclusion du contrôleur accueil JS -->
-<script src="./controleur/controleur_accueil.js"></script>
-
 <script>
-    // Au clic n'importe où, masquer le message et charger le contrôleur
+    // Au clic, on redirige vers la vraie page d'accueil
     document.body.addEventListener('click', () => {
-        // Masquer le texte de bienvenue
-        document.querySelector('h1').style.display = 'none';
-        document.querySelector('p').style.display = 'none';
-
-        // Afficher l'app
-        const app = document.getElementById('app');
-        app.style.display = 'block';
-
-        // Charger le contenu via le contrôleur
-        controleurAccueil();
-    }, { once: true }); // L'événement ne se déclenche qu'une fois
+        window.location.href = './accueil.html';
+    }, { once: true });
 </script>
-
 </body>
 </html>
