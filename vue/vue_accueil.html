@@ -1,4 +1,53 @@
 <main>
-    <h2>Page d'accueil</h2>
-    <p>Bienvenue sur mon site en JavaScript (version MVC simple).</p>
+    <h2>Mon Portfolio</h2>
+    <p>Bienvenue sur mon portfolio ! Voici quelques-uns de mes projets :</p>
+
+    <section class="portfolio">
+        <article class="projet">
+            <h3>Projet 1 : Site Web</h3>
+            <p>Un site web responsive réalisé avec HTML, CSS et JavaScript.</p>
+        </article>
+
+        <article class="projet">
+            <h3>Projet 2 : Application JS</h3>
+            <p>Une application web interactive utilisant la programmation JavaScript moderne.</p>
+        </article>
+
+        <article class="projet">
+            <h3>Projet 3 : Portfolio Animé</h3>
+            <p>Un portfolio animé avec CSS et quelques effets JavaScript.</p>
+        </article>
+    </section>
 </main>
+
+<style>
+    main {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    .portfolio {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .projet {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .projet:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .projet h3 {
+        margin-top: 0;
+        color: #333;
+    }
+</style>
