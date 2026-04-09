@@ -6,16 +6,16 @@ function chargerControleur(nom) {
 
     script.onload = () => {
 
+        // transforme "controleur_ecranbienvenue" → "controleurEcranbienvenue"
+        const base = nom.replace("controleur_", "");
         const nomFonction =
-            "controleur" + nom.replace("controleur_", "")
-                              .charAt(0).toUpperCase()
-            + nom.replace("controleur_", "").slice(1);
+            "controleur" + base.charAt(0).toUpperCase() + base.slice(1);
 
         if (typeof window[nomFonction] === "function") {
             window[nomFonction]();
         } else {
             document.getElementById('app').innerHTML =
-                "<h1>Erreur contrôleur</h1>";
+                "<h1>Erreur : fonction non trouvée</h1>";
         }
     };
 
@@ -23,12 +23,13 @@ function chargerControleur(nom) {
 }
 
 
-// ROUTING
+// ROUTER
 function router() {
 
     let hash = window.location.hash.replace("#", "");
 
-    if (hash === "") hash = "bienvenue";
+    // page par défaut
+    if (hash === "") hash = "ecranbienvenue";
 
     chargerControleur("controleur_" + hash);
 }
