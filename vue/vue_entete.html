@@ -71,9 +71,30 @@ header hr {
 }
 </style>
 <header>
+    <h1>Mon Portfolio</h1>
     <nav>
-        <a href="#">Accueil</a>
-        <a href="#">Contact</a>
+        <a href="#" id="lienAccueil">Accueil</a>
+        <a href="#" id="lienContact">Contact</a>
     </nav>
     <hr>
 </header>
+
+<script type="module">
+    import { controleurAccueil } from './controleur/controleur_accueil.js';
+    import { controleurContact } from './controleur/controleur_contact.js';
+
+    // Au clic sur Accueil
+    document.getElementById('lienAccueil').addEventListener('click', (e) => {
+        e.preventDefault(); // empêche le rechargement
+        controleurAccueil();
+    });
+
+    // Au clic sur Contact
+    document.getElementById('lienContact').addEventListener('click', (e) => {
+        e.preventDefault();
+        controleurContact();
+    });
+
+    // Charge la page d'accueil par défaut
+    controleurAccueil();
+</script>
