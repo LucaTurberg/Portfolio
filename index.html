@@ -4,31 +4,75 @@
     <meta charset="UTF-8">
     <title>Bienvenue</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            overflow: hidden;
             text-align: center;
-            padding: 50px;
-            background: #f4f4f4;
-            color: #2c3e50;
         }
+
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 4em;
+            margin: 0;
+            animation: fadeIn 1s ease-in-out;
         }
+
         p {
-            font-size: 1.2em;
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: fadeIn 2s ease-in-out;
         }
+
         #countdown {
             font-weight: bold;
-            font-size: 2em;
-            color: #e74c3c;
+            font-size: 5em;
+            color: #ffe74c;
+            animation: pulse 1s infinite;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            background: #ff4c4c;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            margin-top: 30px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ff1a1a;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px);}
+            to { opacity: 1; transform: translateY(0);}
         }
     </style>
 </head>
 <body>
 
 <h1>Bienvenue sur mon Portfolio !</h1>
-<p>Vous allez être redirigé vers la page d'accueil dans <span id="countdown">5</span> secondes...</p>
+<p>Vous allez être redirigé vers la page d'accueil dans <span id="countdown">5</span> secondes</p>
+<button id="goNow">Aller maintenant</button>
 
 <script>
     let seconds = 5;
@@ -40,10 +84,14 @@
 
         if (seconds <= 0) {
             clearInterval(interval);
-            // Redirection vers le contrôleur accueil
             window.location.href = './controleur/controleur_accueil.html';
         }
     }, 1000);
+
+    // Bouton pour passer directement
+    document.getElementById('goNow').addEventListener('click', () => {
+        window.location.href = './controleur/controleur_accueil.html';
+    });
 </script>
 
 </body>
