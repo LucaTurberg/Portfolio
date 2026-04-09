@@ -1,15 +1,16 @@
 function controleurEcranBienvenue() {
     const app = document.getElementById('app');
 
-    // Charger la vue
+    // 1. Charger la vue bienvenue
     fetch('./vue/vue_ecran_bienvenue.html')
         .then(res => res.text())
         .then(html => {
             app.innerHTML = html;
 
-            // Animation clignotante du texte
-            const p = app.querySelector('p');
-            p.style.animation = "blink 1s infinite";
+            const screen = document.getElementById('bienvenue');
+            const text = screen.querySelector('p');
+
+            // 2. animation blink
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes blink {
@@ -19,9 +20,33 @@ function controleurEcranBienvenue() {
             `;
             document.head.appendChild(style);
 
-            // Au clic n'importe où, passer à l'accueil
-            app.querySelector('#bienvenue').addEventListener('click', () => {
-                controleurAccueil();
+            text.style.animation = "blink 1s infinite";
+
+            // 3. clic → charger accueil
+            screen.addEventListener('click', () => {
+                screen.style.opacity = "0";
+                screen.style.transition = "0.3s";
+
+                setTimeout(() => {
+                    chargerAccueil();
+                }, 300);
             }, { once: true });
         });
+}
+
+
+// ============================
+// ACCUEIL (toujours dans le même contrôleur)
+// ============================
+function chargerAccueil() {
+    const app = document.getElementById('app');
+
+    Promise.all([
+        fetch('./vue/vue_entete.html').then(r => r.text()),
+        fetch('./vue/vue_accueil.html').then(r => r.text()),
+        fetch('./vue/vue_pied.html').then(r => r.text())
+    ])
+    .then(([entete, contenu, pied]) => {
+        app.innerHTML = entete + contenu + pied;
+    });
 }
