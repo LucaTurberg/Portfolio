@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Bienvenue</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
         body {
             margin: 0;
@@ -13,53 +13,29 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Press Start 2P', cursive;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
-            overflow: hidden;
             text-align: center;
+            cursor: pointer; /* invite à cliquer */
+            user-select: none;
         }
 
         h1 {
-            font-size: 4em;
+            font-size: 2.5em;
             margin: 0;
             animation: fadeIn 1s ease-in-out;
         }
 
         p {
-            font-size: 1.5em;
-            margin: 20px 0;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        #countdown {
-            font-weight: bold;
-            font-size: 5em;
-            color: #ffe74c;
-            animation: pulse 1s infinite;
-        }
-
-        button {
-            padding: 15px 40px;
             font-size: 1.2em;
-            border: none;
-            border-radius: 50px;
-            background: #ff4c4c;
-            color: #fff;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            margin-top: 30px;
+            margin: 20px 0;
+            animation: blink 1s infinite;
         }
 
-        button:hover {
-            transform: scale(1.1);
-            background: #ff1a1a;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
         }
 
         @keyframes fadeIn {
@@ -69,30 +45,14 @@
     </style>
 </head>
 <body>
-
 <h1>Bienvenue sur mon Portfolio !</h1>
-<p>Vous allez être redirigé vers la page d'accueil dans <span id="countdown">5</span> secondes</p>
-<button id="goNow">Aller maintenant</button>
+<p>Cliquez n'importe où pour commencer</p>
 
 <script>
-    let seconds = 5;
-    const countdownEl = document.getElementById('countdown');
-
-    const interval = setInterval(() => {
-        seconds--;
-        countdownEl.textContent = seconds;
-
-        if (seconds <= 0) {
-            clearInterval(interval);
-            window.location.href = './controleur/controleur_accueil.html';
-        }
-    }, 1000);
-
-    // Bouton pour passer directement
-    document.getElementById('goNow').addEventListener('click', () => {
+    // Écoute le clic n'importe où
+    document.body.addEventListener('click', () => {
         window.location.href = './controleur/controleur_accueil.html';
     });
 </script>
-
 </body>
 </html>
