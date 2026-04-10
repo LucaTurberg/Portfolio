@@ -6,6 +6,6 @@ class Controleur_Contact {
       fetch("Vue/Vue_Pied.html").then((r) => r.text()),
     ]);
 
-    document.body.innerHTML = entete + contact + pied;
+    document.innerHTML = entete + contact + pied;
   }
 }
