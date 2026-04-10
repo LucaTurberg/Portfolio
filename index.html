@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Vue Tabs</title>
+<title>MVC Tabs</title>
 
 <style>
 body {
@@ -23,10 +23,12 @@ body {
   cursor: pointer;
 }
 
+#content {
+  padding-top: 50px;
+}
+
 .tabcontent {
-  display: none;
   padding: 80px;
-  text-align: center;
   min-height: 100vh;
 }
 
@@ -42,69 +44,17 @@ body {
   Cliquez n'importe où pour commencer
 </div>
 
-<div id="site" style="display:none;">
+<div id="app" style="display:none;">
 
-  <!-- 🔥 composant Vue header -->
+  <!-- HEADER (injecté par contrôleur) -->
   <div id="header"></div>
 
-  <!-- pages -->
-  <div id="Accueil" class="tabcontent">
-    <h3>Accueil</h3>
-    <p>Bienvenue sur la page d'accueil</p>
-  </div>
-
-  <div id="Contact" class="tabcontent">
-    <h3>Contact</h3>
-    <p>Contacte-nous ici</p>
-  </div>
+  <!-- CONTENU -->
+  <div id="content"></div>
 
 </div>
 
-<script>
-
-// 🔥 charger composant Vue_Entete.html
-fetch("Vue/Vue_Entete.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("header").innerHTML = html;
-  });
-
-// 🔥 start app
-function startApp() {
-  document.getElementById("startScreen").style.display = "none";
-  document.getElementById("site").style.display = "block";
-
-  openTab("Accueil", false);
-  history.replaceState(null, "", "#Accueil");
-}
-
-// 🔥 tabs
-function openTab(name, updateUrl = true) {
-  let tabs = document.getElementsByClassName("tabcontent");
-
-  for (let i = 0; i < tabs.length; i++) {
-    tabs[i].style.display = "none";
-  }
-
-  document.getElementById(name).style.display = "block";
-
-  if (updateUrl) {
-    history.replaceState(null, "", "#" + name);
-  }
-}
-
-// 🔥 reload support
-window.onload = function () {
-  let tab = window.location.hash.replace("#", "");
-
-  if (tab) {
-    document.getElementById("startScreen").style.display = "none";
-    document.getElementById("site").style.display = "block";
-    openTab(tab, false);
-  }
-};
-
-</script>
+<script src="Controleur/Controleur_Accueil.js"></script>
 
 </body>
 </html>
