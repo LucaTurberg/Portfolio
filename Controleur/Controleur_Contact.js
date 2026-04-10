@@ -8,7 +8,7 @@ Promise.all([
   document.open();
 
   // CSS
-  document.write('<link rel="stylesheet" href="Style/Style_Accueil.css">');
+  document.write('<link rel="stylesheet" href="Style/Style_Contact.css">');
 
   // Scripts (src)
   document.write('<script src="Routeur/Routeur.js"><\/script>');
@@ -16,7 +16,7 @@ Promise.all([
 
   // Vues
   document.write(entete);
-  document.write(accueil);
+  document.write(contact);
   document.write(pied);
 
   document.close();
