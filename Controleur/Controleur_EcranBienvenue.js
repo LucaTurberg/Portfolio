@@ -2,13 +2,26 @@ fetch("Vue/Vue_EcranBienvenue.html")
   .then(r => r.text())
   .then(html => {
 
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "../Style/Style_EcranBienvenue.css";
+    // Charger le CSS
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "Style/Style_EcranBienvenue.css";
 
-    link.onload = () => {
+    css.onload = () => {
+
+      // Injecter le HTML
       document.body.innerHTML = html;
+
+      // Charger les scripts
+      const scriptRouteur = document.createElement("script");
+      scriptRouteur.src = "Routeur/Routeur.js";
+
+      const scriptModel = document.createElement("script");
+      scriptModel.src = "Model/Model_EcranBienvenue.js";
+
+      document.body.appendChild(scriptRouteur);
+      document.body.appendChild(scriptModel);
     };
 
-    document.head.appendChild(link);
+    document.head.appendChild(css);
   });
