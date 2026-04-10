@@ -1,4 +1,4 @@
-class Router {
+class Routeur {
   EcranBienvenue() { 
     window.location.hash = "#EcranBienvenue", import("../Controleur/Controleur_EcranBienvenue.js"); 
   }
