@@ -9,6 +9,3 @@ document.getElementById("lienAccueil").addEventListener("click", () => {
 document.getElementById("lienContact").addEventListener("click", () => {
     routeur.Contact();
 });
-
-// Page par défaut
-routeur.Accueil();
