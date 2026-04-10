@@ -10,6 +10,7 @@ body {
   font-family: Arial;
 }
 
+/* écran de démarrage */
 #startScreen {
   position: fixed;
   width: 100%;
@@ -23,11 +24,13 @@ body {
   cursor: pointer;
 }
 
+/* barre tabs */
 .tabbar {
   display: flex;
   width: 100%;
 }
 
+/* boutons */
 .tablink {
   flex: 1;
   background: #555;
@@ -42,6 +45,7 @@ body {
   background: #777;
 }
 
+/* contenu */
 .tabcontent {
   display: none;
   padding: 80px;
@@ -57,10 +61,12 @@ body {
 
 <body>
 
+<!-- écran de départ -->
 <div id="startScreen" onclick="startApp()">
   Cliquez n'importe où pour commencer
 </div>
 
+<!-- site -->
 <div id="site" style="display:none;">
 
   <div class="tabbar">
@@ -82,20 +88,18 @@ body {
 
 <script>
 
+// 🔥 démarrage
 function startApp() {
-  // 1. afficher site d'abord
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("site").style.display = "block";
 
-  // 2. ouvrir tab accueil
   openTab("Accueil", false);
 
-  // 3. IMPORTANT: update URL après rendu
-  setTimeout(() => {
-    window.location.hash = "Accueil";
-  }, 0);
+  // URL propre sans scroll
+  history.replaceState(null, "", "#Accueil");
 }
 
+// 🔥 open tab
 function openTab(name, updateUrl = true) {
   let tabs = document.getElementsByClassName("tabcontent");
 
@@ -105,12 +109,13 @@ function openTab(name, updateUrl = true) {
 
   document.getElementById(name).style.display = "block";
 
+  // mise à jour URL sans scroll
   if (updateUrl) {
-    window.location.hash = name;
+    history.replaceState(null, "", "#" + name);
   }
 }
 
-// si on arrive direct avec #Accueil
+// 🔥 ouverture directe si refresh avec hash
 window.onload = function () {
   let tab = window.location.hash.replace("#", "");
 
@@ -122,5 +127,6 @@ window.onload = function () {
 };
 
 </script>
+
 </body>
 </html>
