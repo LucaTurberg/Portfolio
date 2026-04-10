@@ -11,7 +11,7 @@ Promise.all([
   document.write('<link rel="stylesheet" href="Style/Style_Accueil.css">');
 
   // Scripts (src)
-  document.write('<script src="Routeur/Routeur.js"><\/script>');
+  // document.write('<script src="Routeur/Routeur.js"><\/script>');
   document.write('<script src="Model/Model_Entete.js"><\/script>');
 
   // Vues
