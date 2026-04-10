@@ -16,7 +16,6 @@ fetch("Vue/Vue_EcranBienvenue.html")
       const scriptModel = document.createElement("script");
       scriptModel.src = "Model/Model_EcranBienvenue.js";
 
-      document.body.appendChild(scriptRouteur);
       document.body.appendChild(scriptModel);
     };
 
