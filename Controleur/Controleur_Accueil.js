@@ -12,7 +12,7 @@ Promise.all([
 
   // Scripts (src)
   // document.write('<script src="Routeur/Routeur.js"><\/script>');
-//  document.write('<script src="Model/Model_Entete.js"><\/script>');
+  document.write('<script src="Model/Model_Entete.js"><\/script>');
 
   // Vues
   document.write(entete);
