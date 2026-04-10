@@ -83,15 +83,17 @@ body {
 <script>
 
 function startApp() {
-  // 🔥 1. on met direct le hash AVANT affichage
-  window.location.hash = "Accueil";
-
-  // 🔥 2. on affiche le site
+  // 1. afficher site d'abord
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("site").style.display = "block";
 
-  // 🔥 3. ouverture tab accueil
+  // 2. ouvrir tab accueil
   openTab("Accueil", false);
+
+  // 3. IMPORTANT: update URL après rendu
+  setTimeout(() => {
+    window.location.hash = "Accueil";
+  }, 0);
 }
 
 function openTab(name, updateUrl = true) {
@@ -103,7 +105,6 @@ function openTab(name, updateUrl = true) {
 
   document.getElementById(name).style.display = "block";
 
-  // mise à jour URL quand clic sur tab
   if (updateUrl) {
     window.location.hash = name;
   }
@@ -121,6 +122,5 @@ window.onload = function () {
 };
 
 </script>
-
 </body>
 </html>
