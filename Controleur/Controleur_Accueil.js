@@ -7,10 +7,14 @@ Promise.all([
 
   document.open();
 
-  // Ajouter le CSS
+  // CSS
   document.write('<link rel="stylesheet" href="Style/Style_Accueil.css">');
 
-  // Injecter les vues
+  // Scripts (src)
+  document.write('<script src="Routeur/Routeur.js"><\/script>');
+  document.write('<script src="Model/Model_Entete.js"><\/script>');
+
+  // Vues
   document.write(entete);
   document.write(accueil);
   document.write(pied);
