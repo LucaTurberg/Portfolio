@@ -24,16 +24,22 @@ body {
   cursor: pointer;
 }
 
+/* barre tabs full width */
+.tabbar {
+  display: flex;
+  width: 100%;
+}
+
 /* boutons tabs */
 .tablink {
+  flex: 1;
   background: #555;
   color: white;
-  float: left;
   border: none;
-  padding: 14px;
-  width: 25%;
+  padding: 15px;
   cursor: pointer;
   font-size: 16px;
+  transition: 0.2s;
 }
 
 .tablink:hover {
@@ -43,8 +49,9 @@ body {
 /* contenu */
 .tabcontent {
   display: none;
-  padding: 60px;
+  padding: 80px;
   text-align: center;
+  min-height: calc(100vh - 60px);
 }
 
 #Accueil { background: red; }
@@ -63,20 +70,22 @@ body {
 <!-- site -->
 <div id="site" style="display:none;">
 
-  <button class="tablink" onclick="openTab('Accueil')">Accueil</button>
-  <button class="tablink" onclick="openTab('Contact')">Contact</button>
+  <!-- barre tabs -->
+  <div class="tabbar">
+    <button class="tablink" onclick="openTab('Accueil')">Accueil</button>
+    <button class="tablink" onclick="openTab('Contact')">Contact</button>
+  </div>
 
+  <!-- contenu -->
   <div id="Accueil" class="tabcontent">
     <h3>Accueil</h3>
     <p>Bienvenue sur la page d'accueil</p>
   </div>
 
-
   <div id="Contact" class="tabcontent">
     <h3>Contact</h3>
     <p>Contacte-nous ici</p>
   </div>
-
 
 </div>
 
@@ -85,12 +94,12 @@ function startApp() {
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("site").style.display = "block";
 
-  // ouvre directement Accueil
   openTab("Accueil");
 }
 
 function openTab(name) {
   let tabs = document.getElementsByClassName("tabcontent");
+
   for (let i = 0; i < tabs.length; i++) {
     tabs[i].style.display = "none";
   }
