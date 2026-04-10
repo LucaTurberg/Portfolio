@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Site Tabs</title>
+<title>Vue Tabs</title>
 
 <style>
 body {
@@ -10,7 +10,6 @@ body {
   font-family: Arial;
 }
 
-/* écran de démarrage */
 #startScreen {
   position: fixed;
   width: 100%;
@@ -24,33 +23,11 @@ body {
   cursor: pointer;
 }
 
-/* barre tabs */
-.tabbar {
-  display: flex;
-  width: 100%;
-}
-
-/* boutons */
-.tablink {
-  flex: 1;
-  background: #555;
-  color: white;
-  border: none;
-  padding: 15px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.tablink:hover {
-  background: #777;
-}
-
-/* contenu */
 .tabcontent {
   display: none;
   padding: 80px;
   text-align: center;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
 }
 
 #Accueil { background: red; }
@@ -61,19 +38,16 @@ body {
 
 <body>
 
-<!-- écran de départ -->
 <div id="startScreen" onclick="startApp()">
   Cliquez n'importe où pour commencer
 </div>
 
-<!-- site -->
 <div id="site" style="display:none;">
 
-  <div class="tabbar">
-    <button class="tablink" onclick="openTab('Accueil')">Accueil</button>
-    <button class="tablink" onclick="openTab('Contact')">Contact</button>
-  </div>
+  <!-- 🔥 composant Vue header -->
+  <div id="header"></div>
 
+  <!-- pages -->
   <div id="Accueil" class="tabcontent">
     <h3>Accueil</h3>
     <p>Bienvenue sur la page d'accueil</p>
@@ -88,18 +62,23 @@ body {
 
 <script>
 
-// 🔥 démarrage
+// 🔥 charger composant Vue_Entete.html
+fetch("Vue/Vue_Entete.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+  });
+
+// 🔥 start app
 function startApp() {
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("site").style.display = "block";
 
   openTab("Accueil", false);
-
-  // URL propre sans scroll
   history.replaceState(null, "", "#Accueil");
 }
 
-// 🔥 open tab
+// 🔥 tabs
 function openTab(name, updateUrl = true) {
   let tabs = document.getElementsByClassName("tabcontent");
 
@@ -109,13 +88,12 @@ function openTab(name, updateUrl = true) {
 
   document.getElementById(name).style.display = "block";
 
-  // mise à jour URL sans scroll
   if (updateUrl) {
     history.replaceState(null, "", "#" + name);
   }
 }
 
-// 🔥 ouverture directe si refresh avec hash
+// 🔥 reload support
 window.onload = function () {
   let tab = window.location.hash.replace("#", "");
 
