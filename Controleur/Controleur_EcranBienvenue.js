@@ -7,3 +7,4 @@ class Controleur_EcranBienvenue {
         document.write(html);
         document.close();
     }
+}
