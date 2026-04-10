@@ -1,2 +1,4 @@
-const routeur = new Routeur();
+let routeur = new Routeur();
 routeur.EcranBienvenue();
+
+routeur = null;
