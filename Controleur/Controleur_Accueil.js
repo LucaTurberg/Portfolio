@@ -5,17 +5,15 @@ Promise.all([
 ])
 .then(([entete, accueil, pied]) => {
 
-  // Charger le CSS
-  const css = document.createElement("link");
-  css.rel = "stylesheet";
-  css.href = "Style/Style_Accueil.css";
+  document.open();
 
-  css.onload = () => {
+  // Ajouter le CSS
+  document.write('<link rel="stylesheet" href="Style/Style_Accueil.css">');
 
-    // Injecter les 3 vues dans le body
-    document.body.innerHTML = entete + accueil + pied;
+  // Injecter les vues
+  document.write(entete);
+  document.write(accueil);
+  document.write(pied);
 
-  };
-
-  document.head.appendChild(css);
+  document.close();
 });
