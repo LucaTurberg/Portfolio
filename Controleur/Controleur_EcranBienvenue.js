@@ -12,10 +12,7 @@ fetch("Vue/Vue_EcranBienvenue.html")
       // Injecter le HTML
       document.body.innerHTML = html;
 
-      // Charger les scripts
-      const scriptRouteur = document.createElement("script");
-      scriptRouteur.src = "Routeur/Routeur.js";
-
+      // Charger le script
       const scriptModel = document.createElement("script");
       scriptModel.src = "Model/Model_EcranBienvenue.js";
 
