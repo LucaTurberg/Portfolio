@@ -1,37 +1,7 @@
-class Routeur {
-  Bienvenue() {
-    const script = document.createElement("script");
-    script.src = "Controleur/Controleur_EcranBienvenue.js";
+class Router {
+  EcranBienvenue() { window.location.hash = "#EcranBienvenue", import("../Controleur/Controleur_EcranBienvenue.js"); }
 
-    script.onload = () => {
-      const ctrl = new Controleur_EcranBienvenue();
-      ctrl.chargerEcranBienvenue();
-    };
+  Accueil() { window.location.hash = "#Accueil", import("../Controleur/Controleur_Accueil.js"); }
 
-    document.head.appendChild(script);
-  }
-
-  Accueil() {
-    const script = document.createElement("script");
-    script.src = "Controleur/Controleur_Accueil.js";
-
-    script.onload = () => {
-      const ctrl = new Controleur_Accueil();
-      ctrl.chargerAccueil();
-    };
-
-    document.head.appendChild(script);
-  }
-
-  Contact() {
-    const script = document.createElement("script");
-    script.src = "Controleur/Controleur_Contact.js";
-
-    script.onload = () => {
-      const ctrl = new Controleur_Contact();
-      ctrl.chargerContact();
-    };
-
-    document.head.appendChild(script);
-  }
+  Contact() { window.location.hash = "#Contact", import("../Controleur/Controleur_Contact.js"); }
 }
