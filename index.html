@@ -83,14 +83,15 @@ body {
 <script>
 
 function startApp() {
+  // 🔥 1. on met direct le hash AVANT affichage
+  window.location.hash = "Accueil";
+
+  // 🔥 2. on affiche le site
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("site").style.display = "block";
 
-  // ouvre tab selon URL ou défaut
-  let tab = window.location.hash.replace("#", "");
-  if (!tab) tab = "Accueil";
-
-  openTab(tab, false);
+  // 🔥 3. ouverture tab accueil
+  openTab("Accueil", false);
 }
 
 function openTab(name, updateUrl = true) {
@@ -100,16 +101,15 @@ function openTab(name, updateUrl = true) {
     tabs[i].style.display = "none";
   }
 
-  let el = document.getElementById(name);
-  if (el) el.style.display = "block";
+  document.getElementById(name).style.display = "block";
 
-  // update URL
+  // mise à jour URL quand clic sur tab
   if (updateUrl) {
     window.location.hash = name;
   }
 }
 
-// si page rechargée directement avec hash
+// si on arrive direct avec #Accueil
 window.onload = function () {
   let tab = window.location.hash.replace("#", "");
 
