@@ -1,49 +1,11 @@
+class Controleur_Accueil() {
+  async chargerAccueil() {
+    const [entete, accueil, pied] = await Promise.all([
+      fetch("Vue/Vue_Entete.html").then((r) => r.text()),
+      fetch("Vue/Vue_Accueil.html").then((r) => r.text()),
+      fetch("Vue/Vue_Pied.html").then((r) => r.text()),
+    ]);
 
-// 🔥 démarrage app
-function startApp() {
-  document.getElementById("startScreen").style.display = "none";
-  document.getElementById("app").style.display = "block";
-
-  loadHeader();
-  openTab("Accueil");
-}
-
-// 🔥 charger header Vue
-function loadHeader() {
-  fetch("Vue/Vue_Entete.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("header").innerHTML = html;
-    });
-}
-
-// 🔥 ouvrir tab + charger vue correspondante
-function openTab(name, updateUrl = true) {
-
-  let content = document.getElementById("content");
-
-  // load view
-  fetch("Vue/Vue_" + name + ".html")
-    .then(res => res.text())
-    .then(html => {
-      content.innerHTML = html;
-    });
-
-  // URL sync sans scroll
-  if (updateUrl) {
-    history.replaceState(null, "", "#" + name);
+    document.innerHTML = entete + accueil + pied;
   }
 }
-
-// 🔥 reload direct avec hash
-window.onload = function () {
-  let tab = window.location.hash.replace("#", "");
-
-  if (tab) {
-    document.getElementById("startScreen").style.display = "none";
-    document.getElementById("app").style.display = "block";
-
-    loadHeader();
-    openTab(tab, false);
-  }
-};
