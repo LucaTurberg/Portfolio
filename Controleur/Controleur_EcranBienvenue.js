@@ -1,8 +1,9 @@
 class Controleur_EcranBienvenue {
-  async chargerEcranBienvenue() {
-    const res = await fetch("Vue/Vue_EcranBienvenue.html");
-    const html = await res.text();
+    async chargerEcranBienvenue() {
+        const res = await fetch("Vue/Vue_EcranBienvenue.html");
+        const html = await res.text();
 
-    document.documentElement.innerHTML = html;
-  }
-}
+        document.open();
+        document.write(html);
+        document.close();
+    }
