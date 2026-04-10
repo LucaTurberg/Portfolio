@@ -1,2 +1,2 @@
 const routeur = new Routeur();
-routeur.Bienvenue();
+routeur.EcranBienvenue();
