@@ -3,6 +3,6 @@ class Controleur_EcranBienvenue {
     const res = await fetch("Vue/Vue_EcranBienvenue.html");
     const html = await res.text();
 
-    document.innerHTML = html;
+    document.html.innerHTML = html;
   }
 }
