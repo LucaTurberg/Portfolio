@@ -1,4 +1,4 @@
-const routeur = new Routeur();
+// const routeur = new Routeur()
 
 // Navigation Accueil
 document.getElementById("lienAccueil").addEventListener("click", () => {
