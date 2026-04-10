@@ -85,28 +85,5 @@
     </nav>
     <hr>
 </header>
-
-<div id="app"></div> <!-- Contenu chargé par les contrôleurs -->
-
-<script type="module">
-    import { controleurAccueil } from './controleur/controleur_accueil.js';
-    import { controleurContact } from './controleur/controleur_contact.js';
-
-    // Au clic sur Accueil
-    document.getElementById('lienAccueil').addEventListener('click', (e) => {
-        e.preventDefault();
-        controleurAccueil();
-    });
-
-    // Au clic sur Contact
-    document.getElementById('lienContact').addEventListener('click', (e) => {
-        e.preventDefault();
-        controleurContact();
-    });
-
-    // Charge la page d'accueil par défaut
-    controleurAccueil();
-</script>
-
-</body>
-</html>
+<script src="Routeur/Routeur.js"></script>
+<script src="Model/Model_Entete.js"></script>
