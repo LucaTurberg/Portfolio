@@ -1,51 +1,28 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
+main {
+    font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
-/* Conteneur principal contact */
-.contact-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-/* Carte contact */
-.contact-card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Titre */
-.contact-card h1 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
-  text-align: center;
-}
-
-/* Infos contact */
 .contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-size: 16px;
-  color: #444;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    line-height: 1.6;
 }
 
-/* Ligne info */
-.contact-item {
-  padding: 10px;
-  background: #f9fafb;
-  border-radius: 8px;
-  border-left: 4px solid #4a90e2;
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1em;
 }
 
-/* Labels */
-.contact-item span {
-  font-weight: bold;
-  color: #222;
+.contact-info a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #e74c3c;
 }
