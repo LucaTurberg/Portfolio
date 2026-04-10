@@ -1,5 +1,5 @@
 class Controleur_EcranBienvenue {
-  async chargerAccueil() {
+  async chargerEcranBienvenue() {
     try {
       const response = await fetch("Vue/Vue_EcranBienvenue.html");
       const html = await response.text();
