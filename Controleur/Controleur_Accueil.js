@@ -6,6 +6,6 @@ class Controleur_Accueil() {
       fetch("Vue/Vue_Pied.html").then((r) => r.text()),
     ]);
 
-    document.body.innerHTML = entete + accueil + pied;
+    document.innerHTML = entete + accueil + pied;
   }
 }
