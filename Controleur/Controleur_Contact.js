@@ -5,17 +5,19 @@ Promise.all([
 ])
 .then(([entete, contact, pied]) => {
 
-  // Charger le CSS
-  const css = document.createElement("link");
-  css.rel = "stylesheet";
-  css.href = "Style/Style_Contact.css";
+  document.open();
 
-  css.onload = () => {
+  // CSS
+  document.write('<link rel="stylesheet" href="Style/Style_Accueil.css">');
 
-    // Injecter les 3 vues dans le body
-    document.body.innerHTML = entete + contact + pied;
+  // Scripts (src)
+  document.write('<script src="Routeur/Routeur.js"><\/script>');
+  document.write('<script src="Model/Model_Entete.js"><\/script>');
 
-  };
+  // Vues
+  document.write(entete);
+  document.write(accueil);
+  document.write(pied);
 
-  document.head.appendChild(css);
+  document.close();
 });
