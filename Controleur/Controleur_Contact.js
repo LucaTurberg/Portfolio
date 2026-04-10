@@ -1,8 +1,3 @@
-document.open();
-document.write(""); // efface tout le contenu actuel
-document.close();
-
-
 Promise.all([
   fetch("Vue/Vue_Entete.html").then(r => r.text()),
   fetch("Vue/Vue_Contact.html").then(r => r.text()),
