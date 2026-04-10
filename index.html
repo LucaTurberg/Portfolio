@@ -1,24 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mon portfolio</title>
+<meta charset="UTF-8">
+<title>Site Tabs</title>
 
-    <style>
-        body {
-            visibility: hidden;
-        }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+}
 
-        body.loaded {
-            visibility: visible;
-        }
-    </style>
+/* écran de démarrage */
+#startScreen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+/* boutons tabs */
+.tablink {
+  background: #555;
+  color: white;
+  float: left;
+  border: none;
+  padding: 14px;
+  width: 25%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tablink:hover {
+  background: #777;
+}
+
+/* contenu */
+.tabcontent {
+  display: none;
+  padding: 60px;
+  text-align: center;
+}
+
+#Accueil { background: red; }
+#Contact { background: blue; }
+
+</style>
 </head>
+
 <body>
 
-    <script src="Routeur/Routeur.js"></script>
-    <script src="Model/Model_Index.js"></script>
+<!-- écran de départ -->
+<div id="startScreen" onclick="startApp()">
+  Cliquez n'importe où pour commencer
+</div>
+
+<!-- site -->
+<div id="site" style="display:none;">
+
+  <button class="tablink" onclick="openTab('Accueil')">Accueil</button>
+  <button class="tablink" onclick="openTab('Contact')">Contact</button>
+
+  <div id="Accueil" class="tabcontent">
+    <h3>Accueil</h3>
+    <p>Bienvenue sur la page d'accueil</p>
+  </div>
+
+
+  <div id="Contact" class="tabcontent">
+    <h3>Contact</h3>
+    <p>Contacte-nous ici</p>
+  </div>
+
+
+</div>
+
+<script>
+function startApp() {
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("site").style.display = "block";
+
+  // ouvre directement Accueil
+  openTab("Accueil");
+}
+
+function openTab(name) {
+  let tabs = document.getElementsByClassName("tabcontent");
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].style.display = "none";
+  }
+
+  document.getElementById(name).style.display = "block";
+}
+</script>
 
 </body>
 </html>
